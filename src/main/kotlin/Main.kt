@@ -1,4 +1,3 @@
-
 fun main(args: Array<String>) {
     val amount = 8000000
     val lastAmount = 5000;
