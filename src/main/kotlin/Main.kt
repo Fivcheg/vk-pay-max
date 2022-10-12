@@ -1,4 +1,20 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
 
+fun main(args: Array<String>) {
+    val amount = 100
+    val lastAmount = 5000;
+    val cardType = "Mir"
+    val commission: Double = userTypeCardDiscount(cardType, amount, lastAmount)
+    var totalCommisson = if (cardType == "Visa" && commission == 0.0 || cardType == "Mir" && commission == 0.0) {35} else {amount * commission / 10000}
+    println("$totalCommisson  рублей составляет комиссия")
+}
+fun userTypeCardDiscount (cardType: String, amount: Int, lastAmount: Int): Double{
+    val resultDiscount: Double = when (cardType){
+        "Maestro" -> if (amount < 7500000 - lastAmount){0.0} else {0.6}
+        "MasterCard" -> if (amount < 7500000 - lastAmount){0.0} else {0.6}
+        "Visa" -> if (amount > 3500){0.75} else {0.0}
+        "Mir" -> if (amount > 3500){0.75} else {0.0}
+        "VK Pay" -> 0.0
+        else -> 0.0
+    }
+    return resultDiscount
 }
